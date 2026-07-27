@@ -29,6 +29,7 @@ function QueueSuccessPage() {
     const [phoneNumber, setPhoneNumber] = useState(state?.customer?.phoneNumber ?? '');
     const [isPriority, setIsPriority] = useState((state?.customer?.priorityLevel ?? 0) === 1);
     const [updating, setUpdating] = useState(false);
+    const [updated, setUpdated] = useState(false);
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
@@ -43,6 +44,7 @@ function QueueSuccessPage() {
     }, [state?.customer]);
 
     async function handleUpdate() {
+        setUpdated(false);
         if (!customer) {
             return;
         }
@@ -78,6 +80,7 @@ function QueueSuccessPage() {
             setError(err instanceof Error ? err.message : 'Unable to update customer information');
         } finally {
             setUpdating(false);
+            setUpdated(true);
         }
     }
 
@@ -94,43 +97,54 @@ function QueueSuccessPage() {
 
                 {customer ? (
                     <>
-                        {isShowForm ? (
+                        {isShowForm && (
                             <div className="customer-form-card">
-                                <center><h2>THÔNG TIN CÁ NHÂN</h2></center>
+                                <h2 className="center">THÔNG TIN</h2>
                                 {error && <div className="error">{error}</div>}
                                 {successMessage && <div className="success-message">{successMessage}</div>}
+
                                 <label>
                                     Họ và tên
-                                    <input
-                                        value={fullName}
-                                        onChange={(event) => setFullName(event.target.value)}
-                                        placeholder="Nhập họ và tên"
-                                    />
-                                </label>
-                                {/* <label>
-                                    Số điện thoại
-                                    <input
-                                        value={phoneNumber}
-                                        onChange={(event) => setPhoneNumber(event.target.value)}
-                                        placeholder="Nhập số điện thoại"
-                                    />
-                                </label> */}
-                                <label className="checkbox-row">
-                                    <input
-                                        type="checkbox"
-                                        checked={isPriority}
-                                        onChange={(event) => setIsPriority(event.target.checked)}
-                                    />
-                                    <span>Ưu tiên (lớn tuổi, khuyết tật, ...)</span>
+                                    {updated ? <span>{fullName}</span> : (
+                                        <input
+                                            value={fullName}
+                                            onChange={(event) => setFullName(event.target.value)}
+                                            placeholder="Nhập họ và tên"
+                                        />
+                                    )}
                                 </label>
 
-                                <div className="text-right">
-                                    <button type="button" id="update-button" onClick={handleUpdate} disabled={updating}>
-                                        {updating ? 'Đang cập nhật...' : 'Cập nhật'}
-                                    </button>
-                                </div>
+                                {/* <label>
+                                    Số điện thoại
+                                    {updated ? <span>: {phoneNumber}</span> : (
+                                        <input
+                                            value={phoneNumber}
+                                            onChange={(event) => setPhoneNumber(event.target.value)}
+                                            placeholder="Nhập số điện thoại"
+                                        />
+                                    )}
+                                </label> */}
+
+                                {!updated && (
+                                    <>
+                                        {/* <label className="checkbox-row">
+                                            <input
+                                                type="checkbox"
+                                                checked={isPriority}
+                                                onChange={(event) => setIsPriority(event.target.checked)}
+                                            />
+                                            <span>Ưu tiên (lớn tuổi, khuyết tật, ...)</span>
+                                        </label> */}
+
+                                        <div className="text-right">
+                                            <button type="button" id="update-button" onClick={handleUpdate} disabled={updating}>
+                                                {updating ? 'Đang cập nhật...' : 'Cập nhật'}
+                                            </button>
+                                        </div>
+                                    </>
+                                )}
                             </div>
-                        ) : (<div></div>)}
+                        )}                        
 
                         <div className="queue-number-box">
                             <div className="queue-label">SỐ THỨ TỰ</div>
