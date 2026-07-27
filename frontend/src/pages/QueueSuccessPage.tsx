@@ -124,12 +124,11 @@ function QueueSuccessPage() {
                                     <span>Ưu tiên (lớn tuổi, khuyết tật, ...)</span>
                                 </label>
 
-                                {!fullName ? (<div className="text-right">
+                                <div className="text-right">
                                     <button type="button" id="update-button" onClick={handleUpdate} disabled={updating}>
                                         {updating ? 'Đang cập nhật...' : 'Cập nhật'}
                                     </button>
-                                </div>) : ""}
-                                
+                                </div>
                             </div>
                         ) : (<div></div>)}
 
