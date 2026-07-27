@@ -98,43 +98,6 @@ function QueueSuccessPage() {
                             <div className="queue-label">SỐ THỨ TỰ</div>
                             <div className="queue-number">{customer.queueNumber}</div>
                         </div>
-
-                        {isShowForm ? (
-                            <div className="customer-form-card">
-                                <h2>Thông tin cá nhân <strong>(KHÔNG BẮT BUỘC)</strong></h2>
-                                {error && <div className="error">{error}</div>}
-                                {successMessage && <div className="success-message">{successMessage}</div>}
-                                <label>
-                                    Họ và tên
-                                    <input
-                                        value={fullName}
-                                        onChange={(event) => setFullName(event.target.value)}
-                                        placeholder="Nhập họ và tên"
-                                    />
-                                </label>
-                                <label>
-                                    Số điện thoại
-                                    <input
-                                        value={phoneNumber}
-                                        onChange={(event) => setPhoneNumber(event.target.value)}
-                                        placeholder="Nhập số điện thoại"
-                                    />
-                                </label>
-                                <label className="checkbox-row">
-                                    <input
-                                        type="checkbox"
-                                        checked={isPriority}
-                                        onChange={(event) => setIsPriority(event.target.checked)}
-                                    />
-                                    <span>Ưu tiên (lớn tuổi, khuyết tật, ...)</span>
-                                </label>
-                                <div className="text-right">
-                                    <button type="button" id="update-button" onClick={handleUpdate} disabled={updating}>
-                                        {updating ? 'Đang cập nhật...' : 'Cập nhật'}
-                                    </button>
-                                </div>
-                            </div>
-                        ) : (<div></div>)}
                     </>
                 ) : (
                     <div className="error">Không tìm thấy kết quả. Vui lòng quay lại và thử lại.</div>
