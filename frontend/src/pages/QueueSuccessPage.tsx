@@ -94,11 +94,6 @@ function QueueSuccessPage() {
 
                 {customer ? (
                     <>
-                        <div className="queue-number-box">
-                            <div className="queue-label">SỐ THỨ TỰ</div>
-                            <div className="queue-number">{customer.queueNumber}</div>
-                        </div>
-
                         {isShowForm ? (
                             <div className="customer-form-card">
                                 <center><h2>THÔNG TIN CÁ NHÂN</h2></center>
@@ -128,13 +123,20 @@ function QueueSuccessPage() {
                                     />
                                     <span>Ưu tiên (lớn tuổi, khuyết tật, ...)</span>
                                 </label>
-                                <div className="text-right">
+
+                                {!fullName ? (<div className="text-right">
                                     <button type="button" id="update-button" onClick={handleUpdate} disabled={updating}>
                                         {updating ? 'Đang cập nhật...' : 'Cập nhật'}
                                     </button>
-                                </div>
+                                </div>) : ""}
+                                
                             </div>
                         ) : (<div></div>)}
+
+                        <div className="queue-number-box">
+                            <div className="queue-label">SỐ THỨ TỰ</div>
+                            <div className="queue-number">{customer.queueNumber}</div>
+                        </div>
                     </>
                 ) : (
                     <div className="error">Không tìm thấy kết quả. Vui lòng quay lại và thử lại.</div>
