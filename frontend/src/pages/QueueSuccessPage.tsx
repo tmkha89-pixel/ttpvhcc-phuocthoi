@@ -101,7 +101,7 @@ function QueueSuccessPage() {
 
                         {isShowForm ? (
                             <div className="customer-form-card">
-                                <h2>Thông tin cá nhân</h2>
+                                <center><h2>THÔNG TIN CÁ NHÂN</h2></center>
                                 {error && <div className="error">{error}</div>}
                                 {successMessage && <div className="success-message">{successMessage}</div>}
                                 <label>
