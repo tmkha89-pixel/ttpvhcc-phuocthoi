@@ -4,7 +4,6 @@ import LoginPage from './pages/LoginPage';
 import CounterPage from './pages/CounterPage';
 import QueuePage from './pages/QueuePage';
 import QueueSuccessPage from './pages/QueueSuccessPage';
-import DisplayPage from './pages/DisplayPage';
 import LandingPage from './pages/LandingPage';
 import { getSessionWorkerId, subscribeToSessionChange } from './session';
 import MainLayout from './layout/mainlayout';
