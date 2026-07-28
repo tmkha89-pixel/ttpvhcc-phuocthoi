@@ -499,11 +499,11 @@ button.secondary {
 }
 
 @media (max-width: 640px) {
-  .counter-grid,
+  /* .counter-grid,
   .landing-grid,
   .display-grid {
     grid-template-columns: 1fr;
-  }
+  } */
 
   .queue-number {
     font-size: 48px;
