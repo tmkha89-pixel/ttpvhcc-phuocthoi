@@ -144,7 +144,7 @@ function QueueSuccessPage() {
 
                                         <div className="text-right">
                                             <button type="button" id="update-button" onClick={handleUpdate} disabled={updating}>
-                                                {updating ? 'Đang cập nhật...' : 'Cập nhật'}
+                                                {updating ? 'Đang cập nhật...' : 'HOÀN TẤT'}
                                             </button>
                                         </div>
                                     </>
