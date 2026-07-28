@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const isShowForm = true;
@@ -32,6 +32,7 @@ function QueueSuccessPage() {
     const [updated, setUpdated] = useState(false);
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const fullNameRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         const nextCustomer = state?.customer ?? null;
@@ -41,7 +42,11 @@ function QueueSuccessPage() {
         setIsPriority((nextCustomer?.priorityLevel ?? 0) === 1);
         setError('');
         setSuccessMessage('');
-    }, [state?.customer]);
+
+        if (!updated) {
+            fullNameRef.current?.focus();
+        }
+    }, [state?.customer, updated]);
 
     async function handleUpdate() {
         setUpdated(false);
@@ -107,6 +112,7 @@ function QueueSuccessPage() {
                                     Họ và tên
                                     {updated ? <span>{fullName}</span> : (
                                         <input
+                                            ref={fullNameRef}
                                             value={fullName}
                                             onChange={(event) => setFullName(event.target.value)}
                                             placeholder="Nhập họ và tên"
