@@ -97,64 +97,23 @@ function QueueSuccessPage() {
                 </button>
                 <div className="center">
                     <h1>LẤY SỐ THÀNH CÔNG</h1>
-                    <h2>Quầy {customer?.counterId}: {state?.counterName}</h2>
+                    <h2>QUẦY {customer?.counterId}: {state?.counterName}</h2>
                 </div>
 
                 {customer ? (
                     <>
-                        {isShowForm && (
-                            <div className="customer-form-card">
-                                <h2 className="center">THÔNG TIN</h2>
-                                {error && <div className="error">{error}</div>}
-                                {successMessage && <div className="success-message">{successMessage}</div>}
+                        <div className="customer-form-card">
+                            {error && <div className="error">{error}</div>}
+                            {successMessage && <div className="success-message">{successMessage}</div>}
 
-                                <label>
-                                    Họ và tên
-                                    {updated ? <span>{fullName}</span> : (
-                                        <input
-                                            ref={fullNameRef}
-                                            value={fullName}
-                                            onChange={(event) => setFullName(event.target.value)}
-                                            placeholder="Nhập họ và tên"
-                                        />
-                                    )}
-                                </label>
+                            <label>
+                                HỌ VÀ TÊN: {fullName}
+                            </label>
 
-                                {/* <label>
-                                    Số điện thoại
-                                    {updated ? <span>: {phoneNumber}</span> : (
-                                        <input
-                                            value={phoneNumber}
-                                            onChange={(event) => setPhoneNumber(event.target.value)}
-                                            placeholder="Nhập số điện thoại"
-                                        />
-                                    )}
-                                </label> */}
-
-                                {!updated && (
-                                    <>
-                                        {/* <label className="checkbox-row">
-                                            <input
-                                                type="checkbox"
-                                                checked={isPriority}
-                                                onChange={(event) => setIsPriority(event.target.checked)}
-                                            />
-                                            <span>Ưu tiên (lớn tuổi, khuyết tật, ...)</span>
-                                        </label> */}
-
-                                        <div className="text-right">
-                                            <button type="button" id="update-button" onClick={handleUpdate} disabled={updating}>
-                                                {updating ? 'Đang cập nhật...' : 'HOÀN TẤT'}
-                                            </button>
-                                        </div>
-                                    </>
-                                )}
+                            <div className="queue-number-box">
+                                <div className="queue-label">SỐ THỨ TỰ</div>
+                                <div className="queue-number">{customer.queueNumber}</div>
                             </div>
-                        )}                        
-
-                        <div className="queue-number-box">
-                            <div className="queue-label">SỐ THỨ TỰ</div>
-                            <div className="queue-number">{customer.queueNumber}</div>
                         </div>
                     </>
                 ) : (
