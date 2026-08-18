@@ -171,7 +171,6 @@ async function getCustomersByCounter(counterId) {
     },
     orderBy: [
       {status: 'desc'},
-      { priorityLevel: 'desc' },
       { queueNumber: 'asc' }
     ]
   });

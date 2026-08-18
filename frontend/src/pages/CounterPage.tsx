@@ -124,7 +124,7 @@ function CounterPage() {
       setCustomers((current) => {
         const nextCustomers = current.map((item) => (item.id === updated.id ? updated : item));
         return nextCustomers.sort((a, b) => {
-          const statusOrder = { PROCESSING: 0, WAITING: 1, SKIPPED: 2, COMPLETED: 3 } as Record<string, number>;
+          const statusOrder = { PROCESSING: 1, WAITING: 0, SKIPPED: 2, COMPLETED: 3 } as Record<string, number>;
           const rankA = statusOrder[a.status] ?? 99;
           const rankB = statusOrder[b.status] ?? 99;
           if (rankA !== rankB) {
