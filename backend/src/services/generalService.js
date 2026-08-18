@@ -41,7 +41,6 @@ async function displayFeed() {
       },
       orderBy: [
         { counterId: 'asc' },
-        { status: 'desc' },
         { priorityLevel: 'desc' },
         { queueNumber: 'asc' }
       ],
